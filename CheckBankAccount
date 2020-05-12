@@ -1,0 +1,67 @@
+class InsufficientFundsException1 extends Exception{
+    double amount;
+    InsufficientFundsException1(double amount)
+    {
+        this.amount=amount;
+    }
+    double getAmount()
+    {
+        return amount;
+        
+    }
+}
+public class CheckBankAccount {
+    double balance=0;
+void deposit(double amount)
+{
+    balance=balance+amount;
+     System.out.println("Deposit success"+amount+" in to account and total: "+balance);
+}
+    void withdraw(double amount) throws InsufficientFundsException1
+    {
+        if(amount<=balance)
+        {
+            balance=balance-amount;
+            System.out.println("withd draw "+amount+" success and avaliable balance: "+balance);
+        }
+        else
+        {
+            double needs=amount-balance;
+            throw new InsufficientFundsException1(needs);
+        }
+    }
+    void balAvailable()
+    {
+        System.out.println("Avalable Balance: "+balance);
+    }
+    
+       public static void main(String[] args) throws InsufficientFundsException1 {
+        try{
+           CheckBankAccount c=new CheckBankAccount();
+           c.balAvailable();
+        c.deposit(1000);
+        c.balAvailable();
+        c.withdraw(550);
+        c.balAvailable();
+        c.deposit(1000);
+        c.balAvailable();
+        c.withdraw(3000);
+    }
+        catch(InsufficientFundsException1 e)
+        {
+            System.out.println("Insuffiecient Fund Exception Need "+e.getAmount());
+        }
+    
+}
+}
+
+/*output:
+Avalable Balance: 0.0
+Deposit success1000.0 in to account and total: 1000.0
+Avalable Balance: 1000.0
+withd draw 550.0 success and avaliable balance: 450.0
+Avalable Balance: 450.0
+Deposit success1000.0 in to account and total: 1450.0
+Avalable Balance: 1450.0
+Insuffiecient Fund Exception Need 1550.0
+*/
