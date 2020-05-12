@@ -1,0 +1,33 @@
+
+import java.util.*;
+        
+ class AgeIsNegativeException extends Exception {  //Create Our Own UserDefined Exception
+    String message="";
+    AgeIsNegativeException(String message)
+    {
+        this.message=message;
+    }
+    
+ }
+public class UserDefinedException
+{
+    public static void main(String[] args) throws AgeIsNegativeException
+    {
+          Scanner sc = new Scanner(System.in);  //Declaring Scanner variable to take input from user
+ 
+          System.out.println("Enter Your Age");
+ 
+          int age = sc.nextInt();         //Taking input from user
+ 
+          
+                if(age < 0)
+              {
+     throw new AgeIsNegativeException("Dont give negative age");                //throws AgeIsNegativeException if age is negative
+              }
+                else{
+                System.out.println("your age"+age);
+          }
+          
+    }
+        }
+        
