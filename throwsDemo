@@ -1,0 +1,15 @@
+class CheckedDemo
+{
+public static void main(String args[]) throws ClassNotFoundException
+{
+try
+{
+Class.forName("devi");//load jarfile
+System.out.println("welcome");
+}
+catch(ClassNotFoundException e)
+{
+System.out.println(e);
+}
+}
+}
