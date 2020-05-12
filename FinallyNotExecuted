@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+class FinallyNotExecuted
+{
+    public static void main(String args[])
+    {
+        Scanner scan=new Scanner(System.in);
+        System.out.println("Enter b");
+        int b=scan.nextInt();
+     try
+     {
+        
+         int a=10/b;//if b==0 throw new ArithmeticException();
+         System.out.println(a);
+         System.out.println("welcome");
+        System.exit(0);
+     }
+    
+    
+catch(NullPointerException e){System.out.println(e);}
+
+      catch(Exception e)         // Exception e=new ArithmeticException();
+     {
+         System.out.println(e);
+     }
+     
+     finally
+     {
+         System.out.println("finally executed");
+         scan.close();//resource relesed statements 
+     }
+     
+    }
+}
+/* Check the Output :Here Finally block not executed
+:Identfy the reason*/
