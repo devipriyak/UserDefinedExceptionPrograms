@@ -1,0 +1,44 @@
+class FinallyDemo
+{
+    public static void main(String args[])
+    {
+        Scanner scan=new Scanner(System.in);
+        int b=scan.nextInt();
+     try
+     {
+        
+         int a=10/b;//if b==0 throw new ArithmeticException();
+         System.out.println(a);
+         System.out.println("welcome");
+        
+     }
+    
+    
+catch(NullPointerException e){}
+
+      catch(Exception e)         // Exception e=new ArithmeticException();
+     {
+         System.out.println(e);
+     }
+     
+     finally
+     {
+         System.out.println("finally executed");
+         scan.close();//resource relesed statements 
+     }
+     
+    }
+}
+/*If b is 2:
+Enter b
+2
+5
+welcome
+finally executed
+
+
+case2:If b is 0
+Enter b
+0
+java.lang.ArithmeticException: / by zero
+finally executed*/
